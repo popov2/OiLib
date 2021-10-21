@@ -4,6 +4,9 @@
 
 #include "oilist.h"
 
+//
+//
+//
 struct _TList
 {
     uint16_t nCount;
@@ -12,15 +15,21 @@ struct _TList
     TListItem* pIteratorItem;
 };
 
-struct _TListItem
+typedef struct _TListItem
 {
     void* pData;
     TListItem* pNext;
-};
+} TListItem;
 
+// 
+// 
+//
 void* OiList_LastItem( TList* aList );
 
 
+//
+// 
+// 
 TList* OiList_Create()
 {
     TList* pList = malloc( sizeof( TList ) );

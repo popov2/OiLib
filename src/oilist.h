@@ -3,9 +3,6 @@
 
 typedef struct _TList TList;
 
-typedef struct _TListItem TListItem;
-
-
 
 TList* OiList_Create();
 
