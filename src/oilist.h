@@ -1,3 +1,6 @@
+#ifndef OILIST_H
+#define OILIST_H
+
 #include <stdint.h>
 
 
@@ -19,3 +22,5 @@ void* OiList_Last( TList* aList );
 
 void OiList_Append( TList* aList, void* aData );
 void OiList_Prepend( TList* aList, void* aData );
+
+#endif // OILIST_H
