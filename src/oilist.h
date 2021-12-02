@@ -3,10 +3,29 @@
 
 #include <stdint.h>
 
+//
+//
+//
+typedef struct _TListItem TListItem;
 
-typedef struct _TList TList;
+typedef struct _TListItem
+{
+    void* pData;
+    TListItem* pNext;
+} TListItem;
+
+typedef struct _TList
+{
+    uint16_t nCount;
+    TListItem* pFirstItem;
+
+    TListItem* pIteratorItem;
+} TList;
 
 
+//
+//
+//
 TList* OiList_Create();
 
 void OiList_Destroy( TList* aList, void (*f)(void*) );

@@ -1,0 +1,23 @@
+CC=gcc
+
+CFLAGS=-Wall -Wextra -Wpedantic -std=c11
+
+DIR_SOURCES = . src test
+DIR_SOURCES_ACTUAL = $(addprefix ../,$(DIR_SOURCES))
+
+SOURCES = $(wildcard $(addsuffix /*.c,$(DIR_SOURCES_ACTUAL)))
+OBJECTFILES = $(notdir $(patsubst %.c,%.o,$(SOURCES)))
+
+VPATH = $(DIR_SOURCES_ACTUAL)
+
+all: build
+
+build: $(OBJECTFILES)
+	$(CC) $(OBJECTFILES) -o main.bin
+
+%.o: %.c
+	gcc $(CFLAGS) $(compile_flags) -c -MD $(addprefix -I,$(DIR_SOURCES_ACTUAL)) $<
+
+include $(wildcard *.d) 
+
+

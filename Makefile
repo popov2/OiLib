@@ -1,16 +1,29 @@
-CC=gcc
+APPLICATION = oiLib_testapp
 
-CFLAGS=-Wall -Wextra -Wpedantic -std=c11
+DIR_DEBUG = debug
+DIR_RELEASE = release
 
-SOURCES=src/*.c
 
 all: build_release
 
 build_debug:
-	$(CC) $(CFLAGS) -g $(SOURCES) -o debug/main.bin
+	mkdir -p $(DIR_DEBUG)
+	make compile_flags="-O0 -g"  --directory=$(DIR_DEBUG) --makefile=../Makefile_Build
 
 build_release:
-	$(CC) $(CFLAGS) $(SOURCES) -o release/main.bin
+	mkdir -p $(DIR_RELEASE)
+	make compile_flags="-O3" --directory=$(DIR_RELEASE) --makefile=../Makefile_Build
+	mkdir -p bin
+	cp $(DIR_RELEASE)/main.bin bin/$(APPLICATION)
+	
 
 clean:
-	rm -rf *.o debug/main.bin release/main.bin
+	rm -rf $(DIR_DEBUG)/main.bin 
+	rm -rf $(DIR_DEBUG)/*.d 
+	rm -rf $(DIR_DEBUG)/*.o 
+	rm -rf $(DIR_RELEASE)/main.bin 
+	rm -rf $(DIR_RELEASE)/*.d 
+	rm -rf $(DIR_RELEASE)/*.o 
+	rm -rf bin/$(APPLICATION)
+
+

@@ -4,23 +4,6 @@
 
 #include "oilist.h"
 
-//
-//
-//
-struct _TList
-{
-    uint16_t nCount;
-    TListItem* pFirstItem;
-
-    TListItem* pIteratorItem;
-};
-
-typedef struct _TListItem
-{
-    void* pData;
-    TListItem* pNext;
-} TListItem;
-
 // 
 // 
 //

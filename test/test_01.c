@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../src/oilist.h"
+#include "src/oilist.h"
 
 int main( int argc, char** argv )
 {
+    printf( "OiList test app\n" );
+    printf( "---\n" );
+
     TList* pNewList = OiList_Create();
 
 
