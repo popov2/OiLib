@@ -1,5 +1,3 @@
-#include <oilist.h>
-
 #include <stdlib.h>
 #include <string.h>
 
@@ -49,8 +47,13 @@ void OiList_Destroy( TList* aList, void (*f)(void*) )
     return;
 }
 
-uint16_t OiList_Count( TList* aList )
+int32_t OiList_Count( TList* aList )
 {
+    if( NULL == aList )
+    {
+        return -1;
+    }
+
     return aList->nCount;
 }
 
@@ -232,4 +235,19 @@ void OiList_Prepend( TList* aList, void* aData )
     return;
 }
 
+void OiList_PrependCopy( TList* aList, void* aData, uint32_t aSize )
+{
+    if( NULL == aList )
+    {
+        return;
+    }
 
+    if( NULL == aData )
+    {
+        return;
+    }
+
+    void* pNewData = malloc( aSize );
+    memcpy( pNewData, aData, aSize );
+    OiList_Prepend( aList, pNewData );
+}
