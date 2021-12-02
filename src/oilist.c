@@ -7,8 +7,7 @@
 // 
 // 
 //
-void* OiList_LastItem( TList* aList );
-
+//void* OiList_LastItem( TList* aList );
 
 //
 // 
