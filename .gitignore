@@ -1,6 +1,3 @@
-release/main.bin
-release/oilist.d
-release/oilist.o
-release/test_01.d
-release/test_01.o
-bin/oiLib_testapp
+debug/*
+release/*
+bin/*
