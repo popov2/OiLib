@@ -8,7 +8,7 @@ all: build_release
 
 build_debug:
 	mkdir -p $(DIR_DEBUG)
-	make compile_flags="-O0 -g"  --directory=$(DIR_DEBUG) --makefile=../Makefile_Build
+	make compile_flags="-O0 -g" --directory=$(DIR_DEBUG) --makefile=../Makefile_Build
 
 build_release:
 	mkdir -p $(DIR_RELEASE)
