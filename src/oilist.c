@@ -1,6 +1,7 @@
 #include <oilist.h>
 
 #include <stdlib.h>
+#include <string.h>
 
 #include "oilist.h"
 
@@ -189,6 +190,23 @@ void OiList_Append( TList* aList, void* aData )
     aList->nCount++;
 
     return;
+}
+
+void OiList_AppendCopy( TList* aList, void* aData, uint32_t aSize )
+{
+    if( NULL == aList )
+    {
+        return;
+    }
+
+    if( NULL == aData )
+    {
+        return;
+    }
+
+    void* pNewData = malloc( aSize );
+    memcpy( pNewData, aData, aSize );
+    OiList_Append( aList, pNewData );
 }
 
 void OiList_Prepend( TList* aList, void* aData )

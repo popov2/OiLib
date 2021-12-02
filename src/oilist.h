@@ -8,11 +8,11 @@
 //
 typedef struct _TListItem TListItem;
 
-typedef struct _TListItem
+struct _TListItem
 {
     void* pData;
     TListItem* pNext;
-} TListItem;
+};
 
 typedef struct _TList
 {
@@ -40,6 +40,7 @@ void* OiList_Next( TList* aList );
 void* OiList_Last( TList* aList );
 
 void OiList_Append( TList* aList, void* aData );
+void OiList_AppendCopy( TList* aList, void* aData, uint32_t aSize );
 void OiList_Prepend( TList* aList, void* aData );
 
 #endif // OILIST_H
