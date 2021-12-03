@@ -3,6 +3,7 @@
 
 #include "src/oilist.h"
 #include "src/oistack.h"
+#include "src/oiqueue.h"
 
 int main( __attribute__((unused)) int argc, __attribute__((unused)) char** argv )
 {
@@ -65,10 +66,43 @@ int main( __attribute__((unused)) int argc, __attribute__((unused)) char** argv 
         z = OiStack_Pop( pStack );
     }
 
-
-
     OiStack_Destroy( pStack, NULL );
-    printf( "[ ] New stack destroyed\n" );
+    printf( "[ ] Stack destroyed\n" );
+
+    //
+    //
+    //
+    TQueue* pQueue = OiQueue_Create();
+    printf( "[ ] New queue created\n" );
+
+    int* b1 = malloc( sizeof( int ) );
+    *b1 = 100;
+    
+    int* b2 = malloc( sizeof( int ) );
+    *b2 = 200;
+    
+    int* b3 = malloc( sizeof( int ) );
+    *b3 = 300;
+    
+    int* b4 = malloc( sizeof( int ) );
+    *b4 = 400;
+
+    OiQueue_Enqueue( pQueue, b1 );
+    OiQueue_Enqueue( pQueue, b2 );
+    OiQueue_Enqueue( pQueue, b3 );
+    OiQueue_Enqueue( pQueue, b4 );
+
+    int* z1 = (int*)OiQueue_Dequeue( pQueue );
+    while( z1 )
+    {
+        printf( "dequeue item: %d. Count: %d \n", *z1, OiQueue_Count( pQueue ) );
+        free( z1 );
+        z1 = OiQueue_Dequeue( pQueue );
+    }
+
+
+    OiQueue_Destroy( pQueue, NULL );
+    printf( "[ ] Queue destroyed\n" );
 
     return 0;
 }
